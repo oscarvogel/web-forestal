@@ -1,0 +1,6 @@
+[
+    { "url": "/", "text": "Inicio" },
+    { "url": "/#nosotros", "text": "Sobre Nosotros" },
+    { "url": "/#sgi", "text": "SGC" },
+    { "url": "/#contacto", "text": "Contacto" }
+  ]

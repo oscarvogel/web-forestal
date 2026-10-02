@@ -1,0 +1,16 @@
+# Normalizar fin de línea a LF en el repositorio.
+# Necesario para que .htaccess, .php y .njk se desplieguen bien en Linux/Apache.
+* text=auto eol=lf
+
+# Archivos que deben ser estrictamente binarios (no aplicar conversión)
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
+*.avif binary
+*.ico binary
+*.mp4 binary
+*.webm binary
+
+# Mantener el lockfile sin conversión
+package-lock.json -text

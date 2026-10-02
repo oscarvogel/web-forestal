@@ -1,0 +1,162 @@
+<!-- src/_includes/sections/galeria.njk -->
+<section class="py-20 bg-slate-50">
+    <div class="container mx-auto px-6">
+        <div class="w-fit pb-1 px-2 mx-4 rounded-md text-2xl font-semibold border-b-2 border-blue-600">
+            {{ galeria.sectionTitle }}
+        </div>
+        
+        <!-- Slider Container -->
+        <div class="swiper-container mt-8 relative group">
+            <div class="swiper-wrapper">
+                {% for imagen in galeria.imagenes %}
+                <div class="swiper-slide cursor-pointer">
+                    <div class="relative aspect-video rounded-xl overflow-hidden shadow-lg transform transition-transform duration-300 hover:scale-95"
+                         data-src="{{ imagen.src }}"
+                         data-title="{{ imagen.title }}">
+                        <img 
+                            src="{{ imagen.src }}" 
+                            alt="{{ imagen.alt }}"
+                            class="w-full h-full object-cover"
+                            loading="lazy">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 flex items-end p-4">
+                            <p class="text-white text-lg font-semibold">{{ imagen.title }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Navigation -->
+            <div class="swiper-button-next !text-white !right-4"></div>
+            <div class="swiper-button-prev !text-white !left-4"></div>
+            
+            <!-- Pagination -->
+            <div class="swiper-pagination !relative mt-6"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Lightbox Modal -->
+<div id="lightbox" class="fixed inset-0 z-50 hidden items-center justify-center bg-black/90 p-4 backdrop-blur-sm">
+    <div class="max-w-6xl w-full max-h-[90vh] flex flex-col">
+        <button id="close-lightbox" class="self-end mb-4 text-white text-4xl hover:text-gray-200 transition-colors duration-200">&times;</button>
+        <div class="relative flex-1 flex items-center justify-center">
+            <div id="lightbox-loader" class="absolute inset-0 flex items-center justify-center bg-black/50 hidden">
+                <div class="animate-spin rounded-full h-12 w-12 border-4 border-white border-t-transparent"></div>
+            </div>
+            <img id="lightbox-img" 
+                 class="max-w-full max-h-[70vh] object-contain" 
+                 src="" 
+                 alt=""
+                 style="transform: translateZ(0);">
+        </div>
+        <p id="lightbox-title" class="text-white text-center mt-4 text-xl font-medium px-4"></p>
+    </div>
+</div>
+
+<!-- Estilos y Scripts -->
+<style>
+.swiper-slide {
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.7;
+    transform: scale(0.9);
+}
+
+.swiper-slide-active {
+    opacity: 1;
+    transform: scale(1);
+    z-index: 1;
+}
+
+.swiper-slide-next,
+.swiper-slide-prev {
+    opacity: 0.8;
+    transform: scale(0.95);
+}
+
+#lightbox-img {
+    animation: lightboxFadeIn 0.3s ease-out forwards;
+}
+
+@keyframes lightboxFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar Swiper
+    const swiper = new Swiper('.swiper-container', {
+        slidesPerView: 1,
+        centeredSlides: true,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+            delay: 5000,
+            disableOnInteraction: false,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            640: { slidesPerView: 2 },
+            1024: { slidesPerView: 3 }
+        }
+    });
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxTitle = document.getElementById('lightbox-title');
+    const loader = document.getElementById('lightbox-loader');
+
+    document.querySelectorAll('.swiper-slide').forEach(slide => {
+        slide.addEventListener('click', () => {
+            const container = slide.querySelector('div[data-src]');
+            loader.classList.remove('hidden');
+            lightbox.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            lightboxImg.onload = () => {
+                loader.classList.add('hidden');
+                lightboxImg.scrollIntoView({ behavior: 'auto', block: 'center' });
+            };
+            
+            lightboxImg.src = container.dataset.src;
+            lightboxTitle.textContent = container.dataset.title;
+        });
+    });
+
+    // Cerrar Lightbox
+    document.getElementById('close-lightbox').addEventListener('click', () => {
+        lightbox.classList.add('hidden');
+        document.body.style.overflow = 'auto';
+    });
+
+    lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox) {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if(e.key === 'Escape') {
+            lightbox.classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+</script>

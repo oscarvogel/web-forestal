@@ -1,0 +1,66 @@
+﻿{
+  "tituloSeccion": "Nuestros clientes",
+  "descripcion": "En Forestal Garuhapé SA, nuestra prioridad es construir relaciones duraderas basadas en confianza y excelencia. Cada proyecto completado refleja nuestro compromiso con la sostenibilidad y la satisfacción de nuestros clientes, quienes valoran nuestra dedicación al cuidado del medio ambiente y la calidad en cada servicio.",
+  "clientes": [
+    {
+      "logo": "/images/clientes/acon_timber.svg",
+      "alt": "Acon Timber",
+      "enlace": "#"
+    },
+    {
+      "logo": "/images/clientes/arauco.svg",
+      "alt": "Arauco",
+      "enlace": "#"
+    },
+    {
+      "logo": "/images/clientes/arcor.svg",
+      "alt": "Arcor",
+      "enlace": "#"
+    },
+    {
+      "logo": "/images/clientes/cmpc.svg",
+      "alt": "CMPC",
+      "enlace": "#"
+    },
+    {
+      "logo": "/images/clientes/felber.svg",
+      "alt": "Felber",
+      "enlace": "#"
+    },
+    {
+      "logo": "/images/clientes/fresa.svg",
+      "alt": "Fresa",
+      "enlace": "#"
+    },
+    {
+      "logo": "/images/clientes/garabi.svg",
+      "alt": "Garabí",
+      "enlace": "#"
+    },
+    {
+      "logo": "/images/clientes/genergiabio.svg",
+      "alt": "Genergia Bio",
+      "enlace": "#"
+    },
+    {
+      "logo": "/images/clientes/paracel.svg",
+      "alt": "Paracel",
+      "enlace": "#"
+    },
+    {
+      "logo": "/images/clientes/pomera.svg",
+      "alt": "Pomera",
+      "enlace": "#"
+    },
+    {
+      "logo": "/images/clientes/posadas.svg",
+      "alt": "Posadas",
+      "enlace": "#"
+    },
+    {
+      "logo": "/images/clientes/unique.svg",
+      "alt": "Unique",
+      "enlace": "#"
+    }
+  ]
+}

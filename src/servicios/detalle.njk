@@ -1,0 +1,62 @@
+﻿---
+pagination:
+  data: todos_los_servicios
+  size: 1
+  alias: servicio
+permalink: "/servicios/{{ servicio.slug }}/index.html"
+eleventyComputed:
+  title: "{{ servicio.titulo }} | Servicios Forestales | Forestal Garuhapé SA"
+  description: "{{ servicio.descripcion | striptags }}"
+  seo:
+    title: "{{ servicio.titulo }} | Servicios Forestales | Forestal Garuhapé SA"
+    description: "{{ servicio.descripcion | striptags }}"
+    image: "{{ servicio.imagen }}"
+    type: article
+layout: layouts/base.njk
+---
+
+<section class="py-12 pt-24 bg-slate-50" id="service-detail">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="mb-8">
+      <a href="/#servicios" class="text-emerald-700 hover:text-emerald-600 font-medium">Volver a todos los servicios</a>
+    </div>
+
+    <article class="bg-white rounded-2xl shadow-lg overflow-hidden border border-slate-200">
+      <img src="{{ servicio.imagen }}" alt="{{ servicio.titulo }}" class="w-full h-[320px] object-cover">
+      <div class="p-6 md:p-10">
+        <h1 class="text-3xl md:text-4xl font-bold text-slate-900 mb-5">{{ servicio.titulo }}</h1>
+        <p class="text-slate-700 text-lg leading-relaxed mb-6">{{ servicio.descripcion }}</p>
+
+        {% if servicio.descripcion_ampliada %}
+        <div class="text-slate-700 leading-relaxed mb-8">
+          {{ servicio.descripcion_ampliada | safe }}
+        </div>
+        {% endif %}
+
+        <div class="flex flex-wrap gap-3">
+          <a href="/#contacto" class="inline-flex items-center bg-emerald-700 hover:bg-emerald-600 text-white px-5 py-3 rounded-lg font-medium transition-colors">
+            Solicitar asesoramiento
+          </a>
+
+        </div>
+
+        {% set gallery = galerias[servicio.slug] if galerias is defined else null %}
+        {% if gallery %}
+        <section class="mt-8">
+          <h3 class="text-2xl font-semibold text-slate-900 mb-4">Galería</h3>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+            {% for img in gallery %}
+            <figure class="overflow-hidden rounded-lg bg-slate-50">
+              <img src="{{ img.src }}" alt="{{ img.alt }}" class="w-full h-48 object-cover" loading="lazy">
+              {% if img.title %}
+              <figcaption class="p-2 text-sm text-slate-600">{{ img.title }}</figcaption>
+              {% endif %}
+            </figure>
+            {% endfor %}
+          </div>
+        </section>
+        {% endif %}
+      </div>
+    </article>
+  </div>
+</section>

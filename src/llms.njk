@@ -1,0 +1,32 @@
+﻿---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# Forestal Garuhapé SA
+
+> Forestal Garuhapé SA brinda servicios forestales, transporte, biomasa, caminos y consultoría para la cadena foresto-industrial, con foco en eficiencia operativa, seguridad y sostenibilidad.
+
+Sitio oficial: {{ site.url }}/
+
+## Actividad
+
+Forestal Garuhapé SA forma parte de un grupo de empresas dedicado desde 1993 a la consultoría forestal y a la prestación de servicios forestales sustentables totalmente mecanizados. Opera en Argentina y Paraguay.
+
+## Servicios principales
+
+{% for servicio in todos_los_servicios -%}
+- [{{ servicio.titulo }}]({{ site.url }}/servicios/{{ servicio.slug }}/): {{ servicio.descripcion | striptags }}
+{% endfor %}
+
+## Contacto
+
+- Email: {{ site.email }}
+- Teléfono / WhatsApp: {{ site.telephone }}
+
+## Páginas importantes
+
+- Inicio: {{ site.url }}/
+- Servicios: {{ site.url }}/servicios/
+- Consultoría forestal: {{ site.url }}/consultoria/
+- Nosotros: {{ site.url }}/nosotros/
+- Sitemap: {{ site.url }}/sitemap.xml

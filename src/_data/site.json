@@ -1,0 +1,21 @@
+﻿{
+  "name": "Forestal Garuhapé SA",
+  "url": "https://forestalgaruhape.com.ar",
+  "defaultTitle": "Forestal Garuhapé SA | Servicios Forestales y Logística",
+  "defaultDescription": "Forestal Garuhapé SA brinda servicios forestales, transporte, biomasa, caminos y consultoría para la cadena foresto-industrial con foco en eficiencia operativa, seguridad y sostenibilidad.",
+  "defaultImage": "/images/servicios/1470.png",
+  "email": "secretaria@forestalgaruhape.com.ar",
+  "telephone": "+54 9 3743 48-5849",
+  "foundingYear": "1993",
+  "areaServed": ["Argentina", "Paraguay", "Mercosur"],
+  "keywords": [
+    "servicios forestales",
+    "cosecha forestal mecanizada",
+    "transporte forestal",
+    "biomasa forestal",
+    "caminos forestales",
+    "playas de acopio",
+    "consultoría forestal",
+    "cadena foresto-industrial"
+  ]
+}

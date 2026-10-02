@@ -1,0 +1,35 @@
+﻿<header class="fixed w-full z-20 top-8 site-header">
+    <nav class="container mx-auto px-6 py-4" role="navigation" aria-label="Navegación principal">
+        <div class="flex items-center justify-between">
+            <a href="/" aria-label="Forestal Garuhapé SA - Inicio"><img src="/images/logo-30.png" alt="Logo de Forestal Garuhapé SA" class="h-12"></a>
+            
+            <div class="hidden md:flex space-x-8">
+                {% for item in navigation %}
+                <a href="{{ item.url }}" class="text-white hover:text-emerald-300">{{ item.text }}</a>
+                {% endfor %}
+            </div>
+            <button id="mobile-menu-button" class="md:hidden p-2" aria-controls="mobile-menu" aria-expanded="false" aria-label="Abrir menú" onclick="toggleMobileMenu(this)">
+                <svg 
+                    class="w-6 h-6 text-white hover:text-gray-100 transition-colors"
+                    viewBox="0 0 24 24" 
+                    fill="none" 
+                    stroke="currentColor" 
+                    stroke-width="2" 
+                    stroke-linecap="round">
+                    <path d="M3 6h18" class="top-line" />
+                    <path d="M3 12h18" class="middle-line" />
+                    <path d="M3 18h18" class="bottom-line" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Menú Mobile -->
+        <div id="mobile-menu" class="md:hidden absolute top-full left-0 right-0 bg-white shadow-lg hidden" aria-hidden="true">
+            <div class="container mx-auto px-6 py-4">
+                {% for item in navigation %}
+                <a href="{{ item.url }}" class="block py-2 text-slate-700 hover:text-emerald-600" tabindex="0">{{ item.text }}</a>
+                {% endfor %}
+            </div>
+        </div>
+    </nav>
+</header>

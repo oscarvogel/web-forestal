@@ -1,0 +1,76 @@
+# Configuración básica para Apache
+
+# Reducir el consumo de memoria
+Options -MultiViews
+
+# Evitar elRewriteChracterescaping
+RewriteEngine On
+RewriteBase /
+
+# Canonicalizar dominio definitivo para evitar contenido duplicado con www.
+RewriteCond %{HTTP_HOST} ^www\.forestalgaruhape\.com\.ar$ [NC]
+RewriteRule ^(.*)$ https://forestalgaruhape.com.ar/$1 [L,R=301]
+
+# Forzar HTTPS antes de servir contenido indexable.
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://forestalgaruhape.com.ar/$1 [L,R=301]
+
+# Configuración de CORS
+# ------ Descomenta y modifica según tus necesidades
+# <IfModule mod_headers.c>
+#   Header set Access-Control-Allow-Origin "*"
+# </IfModule>
+
+# Expiración y Cache
+# Configurar la caducidad de los archivos estáticos
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType image/* "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
+  ExpiresByType video/webm "access plus 1 year"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType text/javascript "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+</IfModule>
+
+# Configurar gzip para reducir el tamaño de transferencia
+<IfModule mod_deflate.c>
+  SetOutputFilter DEFLATE
+  DeflateParameters -text/css -application/javascript
+  DeflateCompressionLevel 6
+</IfModule>
+
+# Configuar reescritura de URLs
+# Si no está usando archivos .html o .htm en las URLs
+# Ejemplo: http://tusitio.com/pagina-en-lugar-de http://tusitio.com/pagina.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ $1.html [L]
+
+# Configurar página de error 404
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /404.html [L]
+
+# Denegar el acceso al directorio raíz
+<FilesMatch "^\.htaccess$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
+
+# Opciones de Indexing
+Options -Indexes
+
+# Configurar cabeceras HTTP para prevenir.Clickjacking
+# Header always set X-Frame-Options "SAMEORIGIN"
+
+# Configurar cabeceras para mitigar Clickjacking y XSS
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-Permitted-Cross-Domain-Policies "none"
+  Header set X-XSS-Protection "1; mode=block"
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>

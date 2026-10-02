@@ -1,0 +1,26 @@
+﻿[
+  {
+    "titulo": "Producción de Biomasa",
+    "imagen": "/images/servicios/generacion_biomasa.svg",
+    "descripcion": "Aprovechamiento de biomasa forestal, cuyo destino es su transformación en energía renovable, contribuyendo a la sostenibilidad ambiental y optimizando el uso de los recursos naturales disponibles en cada operación.",
+    "lado": "izquierda"
+  },
+  {
+    "titulo": "Cosecha Forestal",
+    "imagen": "/images/servicios/1470.png",
+    "descripcion": "La COSECHA FORESTAL involucra un conjunto planificado de actividades tendientes al aprovechamiento maderable de los árboles del predio a intervenir, utilizando las más altas técnicas y tecnologías disponibles para asegurar productividad, producción y rentabilidad, cuidando la salud y la seguridad de nuestra gente, observando las mejores prácticas ambientales y derramando beneficios en la comunidad en la que operamos.",
+    "lado": "derecha"
+  },
+  {
+    "titulo": "Transporte",
+    "imagen": "/images/servicios/transporte_especial.svg",
+    "descripcion": "Para asegurar el ciclo forestal resulta imprescindible contar con un sistema de transporte eficiente, seguro y confiable que acerque los productos del bosque a la industria. FORESTAL GARUHAPÉ SA cuenta con una flota de camiones para el transporte de troncos y chips, carretones y unidades para la logística de los equipos y formaciones para el transporte de combustible de la más alta tecnología para cumplir con los objetivos del cliente.",
+    "lado": "izquierda"
+  },
+  {
+    "titulo": "Playas de Acopio",
+    "imagen": "/images/servicios/playa_acopio.jpeg",
+    "descripcion": "El proceso industrial exige asegurar el abastecimiento en tiempo y forma de la línea de producción, observando orden y limpieza, seguridad para todas las personas involucradas y considerando los aspectos ambientales que exigen empresas de clase mundial. FORESTAL GARUHAPÉ SA cuenta con una experiencia de más de 20 años en administración de playas de acopio y con equipos de alta tecnología para la carga, descarga, movimientos internos y chipeado de la madera, que permiten no solamente la prestación del servicio sino también el asesoramiento para la optimización de la cadena interna de suministro.",
+    "lado": "derecha"
+  }
+]

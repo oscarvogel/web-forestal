@@ -1,0 +1,26 @@
+{
+  "tituloSeccion": "Quiénes Somos",
+  "vision": "Ser referentes en la región Mercosur en la prestación de servicios y la generación de productos forestales ambiental, social y económicamente sustentables",
+  "imagen": "/images/servicios/somos.jpeg",
+  "descripcion": "Forestal Garuhapé SA, Forestal Paraguay SA y Foresvia SA, somos un grupo de empresas que desde 1993 estamos dedicados a la consultoría forestal y a la prestación de servicios forestales sustentables totalmente mecanizados. Operando actualmente en Argentina y Paraguay, contamos con recursos técnicos y humanos de primer nivel para ofrecer soluciones en:",
+  "consultoria": [
+    "Planes de abastecimiento",
+    "Análisis de mercado",
+    "Estudios de productividad",
+    "Diseño de matriz productiva",
+    "Optimización de supply chain forestal",
+    "Servicios en playa de preparación de madera",
+    "Viveros forestales",
+    "Planificación de corto, mediano y largo plazo"
+  ],
+  "servicios": [
+    "Cosecha y raleo forestal",
+    "Aprovechamiento de biomasa residual para combustible",
+    "Mantenimiento y consolidado de caminos forestales",
+    "Transporte forestal (troncos y astillas)",
+    "Transporte larga distancia nacional e internacional",
+    "Transportes especiales",
+    "Preparación del terreno, plantación y cuidados",
+    "Transporte de combustibles líquidos"
+  ]
+}

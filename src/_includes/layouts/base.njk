@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% include "components/meta.njk" %}
+        <!-- Fonts (distinctive pairing) -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Work+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css">
+        <link rel="stylesheet" href="/css/styles.css">
+        <style>
+            :root { --font-display: 'Playfair Display', serif; --font-body: 'Work Sans', system-ui, sans-serif; }
+            body { font-family: var(--font-body); }
+            h1,h2,h3,h4 { font-family: var(--font-display); }
+        </style>
+    <style>
+        @keyframes slideUp {
+        from {
+            opacity: 0;
+            transform: translateY(100px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .section-animation {
+        animation: slideUp 1s ease-out forwards;
+    }
+
+    .section-hidden {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    </style>
+</head>
+<body class="font-sans">
+    <a href="#contenido-principal" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-3 focus:py-2 focus:rounded-md visually-hidden">Saltar al contenido</a>
+
+    <!-- Banner Superior -->
+    <div class="fixed top-0 w-full bg-emerald-600 text-white text-center py-2 z-30 text-sm">
+        Soluciones Forestales Eficientes y Sostenibles para un Mundo Mejor
+    </div>
+
+    {% include "components/header.njk" %}
+
+    <main id="contenido-principal">
+        {{ content | safe }}
+    </main>
+    
+    {% include "components/footer.njk" %}
+    {% include "sections/whatsapp-button.njk" %}
+    
+    <script src="/js/main.js"></script>
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<section id="sgi" class="py-20 bg-emerald-50 dark:bg-slate-900">
+    <div class="container mx-auto px-6 section-hidden">
+        <!-- Encabezado de sección mejorado -->
+        <div class="w-fit mx-4 mb-12 relative group">
+            <h2 class="text-3xl font-bold text-emerald-800 dark:text-emerald-400">
+                {{ sgi.tituloSeccion }}
+            </h2>
+            <div class="absolute bottom-0 left-0 w-3/4 h-1 bg-emerald-400 opacity-60 
+            transform transition-all duration-500 group-hover:w-full"></div>
+            <div class="absolute bottom-0 left-0 w-1/4 h-1 bg-blue-500 transform 
+            transition-all duration-500 group-hover:w-full"></div>
+        </div>
+
+        <!-- Grid de items mejorado -->
+        <div class="grid lg:grid-cols-2 gap-8 mt-12">
+            {% for item in sgi.items %}
+            <div class="relative bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl 
+            hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 
+            border-l-4 border-emerald-400 overflow-hidden group">
+                
+                <!-- Efecto de fondo decorativo -->
+                <div class="absolute inset-0 bg-gradient-to-br from-emerald-50/30 
+                to-white/30 opacity-0 group-hover:opacity-100 transition-opacity 
+                duration-500 dark:from-emerald-900/10 dark:to-slate-800/10"></div>
+                
+                <!-- Icono y contenido -->
+                <div class="flex items-start gap-6">
+                    <div class="w-14 h-14 flex items-center justify-center bg-emerald-100 
+                    dark:bg-emerald-900/50 rounded-xl transition-all duration-300 
+                    group-hover:bg-emerald-200 group-hover:rotate-6">
+                        <svg class="w-8 h-8 text-emerald-600 dark:text-emerald-400" 
+                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            {% if item.titulo == "Certificaciones" %}
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            {% elif item.titulo == "Compromiso" %}
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                            {% elif item.titulo == "Mejora Continua" %}
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            {% else %}
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343M7 17l4.879-4.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242z"/>
+                            {% endif %}
+                        </svg>
+                    </div>
+                    
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold mb-3 text-emerald-800 
+                        dark:text-emerald-300 group-hover:text-emerald-700 
+                        dark:group-hover:text-emerald-200 transition-colors">
+                            {{ item.titulo }}
+                        </h3>
+                        <p class="text-slate-600 dark:text-slate-300 leading-relaxed 
+                        text-lg opacity-90">
+                            {{ item.descripcion }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

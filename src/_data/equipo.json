@@ -1,0 +1,20 @@
+{
+    "tituloSeccion": "Nuestro Equipo",
+    "miembros": [
+      {
+        "foto": "/images/equipo/juan-perez.png",
+        "nombre": "Juan Pérez",
+        "puesto": "Director de Operaciones"
+      },
+      {
+        "foto": "/images/equipo/maria-gomez.png",
+        "nombre": "María Gómez",
+        "puesto": "Ingeniera Forestal Senior"
+      },
+      {
+        "foto": "/images/equipo/carlos-rojas.png",
+        "nombre": "Carlos Rojas",
+        "puesto": "Especialista en Sustentabilidad"
+      }
+    ]
+  }

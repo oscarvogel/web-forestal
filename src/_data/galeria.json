@@ -1,0 +1,45 @@
+{
+    "sectionTitle": "Galería de Imágenes",
+    "imagenes": [
+      {
+        "src": "/images/galeria/1470_proceso.jpeg",
+        "alt": "Maquinaria forestal 1470",
+        "title": "Maquinaria Forestal 1470"
+      },
+      {
+        "src": "/images/galeria/camion_entrada_arauco.jpeg",
+        "alt": "Camión entrando a Arauco",
+        "title": "Camión entrando a Arauco"
+      },
+      {
+        "src": "/images/galeria/chipeado_gajos.jpeg",
+        "alt": "Chipeado de gajos",
+        "title": "Chipeado de Gajos"
+      },
+      {
+        "src": "/images/galeria/patios_industriales.jpeg",
+        "alt": "Patios industriales",
+        "title": "Patios Industriales"
+      },
+      {
+        "src": "/images/galeria/transporte_forestal_camino.jpeg",
+        "alt": "Transporte forestal en camino",
+        "title": "Transporte Forestal en Camino"
+      },
+      {
+        "src": "/images/galeria/895_extraccion.jpeg",
+        "alt": "Extracción con maquinaria 895",
+        "title": "Extracción con Maquinaria 895"
+      },
+      {
+        "src": "/images/galeria/transporte_forestal_carga.jpeg",
+        "alt": "Transporte forestal",
+        "title": "Transporte Forestal"
+      },
+      {
+        "src": "/images/galeria/chipeado_arbol_entero.jpeg",
+        "alt": "Chipeado de árbol entero",
+        "title": "Chipeado de Árbol Entero"
+      }
+    ]
+  }

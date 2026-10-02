@@ -1,0 +1,111 @@
+body {
+    padding-top: 64px; /* Ajusta según la altura de la navbar */
+}
+/* Theme variables (organic / natural aesthetic) */
+:root {
+        --brand: #0f766e; /* emerald-700 */
+        --accent: #065f46; /* deeper green */
+        --muted: #6b7280;
+        --bg: #ffffff;
+        --surface: #f7f7f6;
+}
+
+/* Visually hidden utility for accessible labels and skip links */
+.visually-hidden,
+.sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}
+
+/* Focus-visible styles for keyboard users */
+:focus {
+    outline: none;
+}
+
+:focus-visible {
+    outline: 3px solid rgba(6, 95, 70, 0.18);
+    outline-offset: 2px;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+/* Agregar estas transiciones */
+svg {
+    transition: transform 0.3s ease;
+}
+
+path {
+    transition: 
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+/* Estado activo (X) */
+.active svg {
+    transform: rotate(180deg);
+}
+
+.active .top-line {
+    transform: translateY(6px) rotate(45deg);
+}
+
+.active .middle-line {
+    opacity: 0;
+}
+
+.active .bottom-line {
+    transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Slider styles */
+.gallery-slider { position: relative; }
+.gallery-slider .slides { transition: transform 0.5s ease; display: flex; }
+.gallery-slider .slide { min-width: 0; }
+.slider-prev, .slider-next { z-index: 10; }
+.slider-dots { pointer-events: auto; }
+.slider-dots .dot { cursor: pointer; }
+.slider-dots .dot.bg-blue-600 { background-color: #2563eb; }
+
+/* Slides: make each card square and center content */
+.gallery-slider .slide { display:flex; align-items:center; justify-content:center; background: #fff; }
+.gallery-slider .slide img { width:100%; height:100%; object-fit:cover; object-position:center; transition: transform 0.5s ease; will-change: transform; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.gallery-slider .slide:hover img,
+.gallery-slider .slide:focus-within img,
+.gallery-slider .slide img:hover {
+    transform: scale(1.06);
+    -webkit-transform: scale(1.06);
+}
+
+/* Responsive: fewer cards on small screens */
+@media (max-width: 768px) {
+    .gallery-slider .slide { width: calc(50% - 0.75rem); }
+}
+
+@media (max-width: 480px) {
+    .gallery-slider .slide { width: calc(100% - 0.75rem); }
+}
+
+/* Header transparency and scrolled state */
+.site-header {
+    background: #ffffff !important;
+    box-shadow: 0 4px 18px rgba(2,6,23,0.06);
+}
+
+/* Keep links and icons dark on white background */
+.site-header a { color: #0f1724 !important; }
+.site-header svg { color: #334155 !important; }

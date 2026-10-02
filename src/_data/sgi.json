@@ -1,0 +1,21 @@
+{
+  "tituloSeccion": "Sistema de Gestión de Calidad",
+  "items": [
+    {
+      "titulo": "Estándares Globales",
+      "descripcion": "Aseguramos la satisfacción de nuestros clientes con estándares de calidad internacional."
+    },
+    {
+      "titulo": "Cumplimiento Legal",
+      "descripcion": "Cumplimiento de requisitos legales y normativos en todos nuestros procesos."
+    },
+    {
+      "titulo": "Innovación Operativa",
+      "descripcion": "Revisión constante de nuestros servicios, con foco en aspectos sociales y ambientales, para mejorar continuamente la eficiencia operativa y la calidad de nuestros servicios."
+    },
+    {
+      "titulo": "Gestión Sostenible",
+      "descripcion": "Gestión responsable que equilibra producción, calidad, medio ambiente y responsabilidad social, para asegurar la sostenibilidad a largo plazo de nuestras operaciones y el bienestar de las comunidades en las que operamos."
+    }
+  ]
+}

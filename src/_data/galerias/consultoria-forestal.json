@@ -1,0 +1,47 @@
+[
+  {
+    "src": "/images/servicios/consultoria.jpg",
+    "alt": "Equipo técnico de consultoría forestal",
+    "title": "Consultoría forestal"
+  },
+  {
+    "src": "/images/consultoria/abastecimiento-fg-transparente.webp",
+    "alt": "Planificación de abastecimiento forestal",
+    "title": "Planes de abastecimiento"
+  },
+  {
+    "src": "/images/consultoria/mercado-forestal-fg-transparente.webp",
+    "alt": "Análisis de mercado forestal",
+    "title": "Análisis de mercado forestal"
+  },
+  {
+    "src": "/images/consultoria/productividad-fg-transparente.webp",
+    "alt": "Estudios de productividad en operaciones forestales",
+    "title": "Estudios de productividad"
+  },
+  {
+    "src": "/images/consultoria/matriz-productiva-fg-transparente.webp",
+    "alt": "Diseño de matriz productiva forestal",
+    "title": "Diseño de matriz productiva"
+  },
+  {
+    "src": "/images/consultoria/supply-chain-fg-transparente.webp",
+    "alt": "Optimización de supply chain forestal",
+    "title": "Supply chain forestal"
+  },
+  {
+    "src": "/images/consultoria/playa-madera-fg-transparente.webp",
+    "alt": "Gestión de playas de madera",
+    "title": "Servicios en playa de madera"
+  },
+  {
+    "src": "/images/consultoria/viveros-tecnificados-fg-transparente.webp",
+    "alt": "Viveros forestales tecnificados",
+    "title": "Viveros forestales tecnificados"
+  },
+  {
+    "src": "/images/consultoria/planificacion-multihorizonte-fg-transparente.webp",
+    "alt": "Planificación forestal multihorizonte",
+    "title": "Planificación multihorizonte"
+  }
+]

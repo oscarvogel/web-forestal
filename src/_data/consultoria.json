@@ -1,0 +1,42 @@
+[
+    {
+        "titulo": "Planes de Abastecimiento",
+        "descripcion": "Diseño estratégico de sistemas de aprovisionamiento para garantizar disponibilidad continua de materia prima, minimizando costos y optimizando inventarios.",
+        "imagen": "/images/consultoria/abastecimiento-fg.webp"
+    },
+    {
+        "titulo": "Análisis de Mercado Forestal",
+        "descripcion": "Estudios competitivos con inteligencia de mercado para identificación de oportunidades y tendencias en el sector forestal-maderero.",
+        "imagen": "/images/consultoria/mercado-forestal-fg.webp"
+    },
+    {
+        "titulo": "Estudios de Productividad",
+        "descripcion": "Diagnóstico y optimización de procesos operativos mediante análisis tecnológico y evaluación de eficiencia en cadena de valor.",
+        "imagen": "/images/consultoria/productividad-fg.webp"
+    },
+    {
+        "titulo": "Diseño de Matriz Productiva",
+        "descripcion": "Modelado de arquitectura operacional integrada para maximizar sinergias entre diferentes unidades de negocio.",
+        "imagen": "/images/consultoria/matriz-productiva-fg.webp"
+    },
+    {
+        "titulo": "Optimización de Supply Chain Forestal",
+        "descripcion": "Reingeniería de cadena de suministro con enfoque en trazabilidad, logística inversa y gestión de proveedores especializados.",
+        "imagen": "/images/consultoria/supply-chain-fg.webp"
+    },
+    {
+        "titulo": "Servicios en Playa de Madera",
+        "descripcion": "Soluciones integrales para gestión de patios de madera incluyendo sistemas de clasificación, almacenamiento y control de calidad.",
+        "imagen": "/images/consultoria/playa-madera-fg.webp"
+    },
+    {
+        "titulo": "Viveros Forestales Tecnificados",
+        "descripcion": "Implementación de sistemas de producción vegetal con control climático, riego automatizado y gestión genética avanzada.",
+        "imagen": "/images/consultoria/viveros-tecnificados-fg.webp"
+    },
+    {
+        "titulo": "Planificación Multihorizonte",
+        "descripcion": "Desarrollo de roadmaps estratégicos integrando ciclos cortos (operativos), medianos (tácticos) y largos (estratégicos).",
+        "imagen": "/images/consultoria/planificacion-multihorizonte-fg.webp"
+    }
+]

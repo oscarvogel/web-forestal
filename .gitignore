@@ -1,0 +1,35 @@
+# Dependencias
+node_modules/
+package-lock.json.orig
+
+# Build de Eleventy (generado)
+_site/
+
+# Entornos locales
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+
+# Cachés y herramientas
+.cache/
+tmp/
+.codegraph/
+.parcel-cache/
+
+# Agentes / IDE (no forman parte del sitio)
+.agents/
+.cursor/
+.claude/
+skills-lock.json
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+npm-debug.log*
+yarn-error.log*

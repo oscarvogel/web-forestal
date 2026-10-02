@@ -1,0 +1,205 @@
+﻿{% set currentPath = page.url or "/" %}
+{% set metaTitle = (seo.title if seo and seo.title else (title if title else site.defaultTitle)) %}
+{% set metaDescription = (seo.description if seo and seo.description else (description if description else site.defaultDescription)) %}
+{% set metaRobots = (seo.robots if seo and seo.robots else "index, follow") %}
+{% set ogType = (seo.type if seo and seo.type else ("website" if currentPath == "/" else "article")) %}
+{% set imagePath = (seo.image if seo and seo.image else site.defaultImage) %}
+{% set canonicalUrl = (seo.canonical if seo and seo.canonical else (site.url + currentPath)) %}
+{% set imageUrl = imagePath %}
+{% if imagePath and ("http" not in imagePath) %}
+		{% set imageUrl = site.url + imagePath %}
+{% endif %}
+{% set isHome = currentPath == "/" %}
+
+<title>{{ metaTitle }}</title>
+<meta name="description" content="{{ metaDescription }}">
+<meta name="author" content="{{ site.name }}">
+<meta name="robots" content="{{ metaRobots }}">
+<meta name="theme-color" content="#059669">
+<meta name="keywords" content="{{ site.keywords | join(', ') }}">
+
+<link rel="canonical" href="{{ canonicalUrl }}">
+<link rel="icon" href="/images/logo-30.png" type="image/png">
+<link rel="alternate" hreflang="es-AR" href="{{ canonicalUrl }}">
+<link rel="alternate" hreflang="x-default" href="{{ canonicalUrl }}">
+
+<meta property="og:locale" content="es_AR">
+<meta property="og:type" content="{{ ogType }}">
+<meta property="og:site_name" content="{{ site.name }}">
+<meta property="og:title" content="{{ metaTitle }}">
+<meta property="og:description" content="{{ metaDescription }}">
+<meta property="og:url" content="{{ canonicalUrl }}">
+<meta property="og:image" content="{{ imageUrl }}">
+<meta property="og:image:alt" content="{{ metaTitle }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ metaTitle }}">
+<meta name="twitter:description" content="{{ metaDescription }}">
+<meta name="twitter:image" content="{{ imageUrl }}">
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": ["Organization", "ProfessionalService"],
+	"@id": "{{ site.url }}/#organization",
+	"name": "{{ site.name }}",
+	"legalName": "{{ site.name }}",
+	"url": "{{ site.url }}",
+	"logo": "{{ site.url }}/images/logo-30.png",
+	"image": "{{ imageUrl }}",
+	"foundingDate": "{{ site.foundingYear }}",
+	"description": "{{ site.defaultDescription }}",
+	"email": "{{ site.email }}",
+	"telephone": "{{ site.telephone }}",
+	"areaServed": [{% for area in site.areaServed %}
+		{
+			"@type": "Place",
+			"name": "{{ area }}"
+		}{% if not loop.last %},{% endif %}
+	{% endfor %}],
+	"knowsAbout": [{% for keyword in site.keywords %}"{{ keyword }}"{% if not loop.last %}, {% endif %}{% endfor %}],
+	"contactPoint": {
+		"@type": "ContactPoint",
+		"telephone": "{{ site.telephone }}",
+		"email": "{{ site.email }}",
+		"contactType": "Atención comercial",
+		"areaServed": "AR",
+		"availableLanguage": "es-AR"
+	},
+	"hasOfferCatalog": {
+		"@type": "OfferCatalog",
+		"name": "Servicios forestales",
+		"itemListElement": [{% for servicio in todos_los_servicios %}
+			{
+				"@type": "Offer",
+				"itemOffered": {
+					"@type": "Service",
+					"name": "{{ servicio.titulo }}",
+					"description": "{{ servicio.descripcion | striptags }}",
+					"url": "{{ site.url }}/servicios/{{ servicio.slug }}/",
+					"provider": {
+						"@id": "{{ site.url }}/#organization"
+					}
+				}
+			}{% if not loop.last %},{% endif %}
+		{% endfor %}]
+	}
+}
+</script>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "WebSite",
+	"@id": "{{ site.url }}/#website",
+	"name": "{{ site.name }}",
+	"url": "{{ site.url }}",
+	"inLanguage": "es-AR",
+	"publisher": {
+		"@id": "{{ site.url }}/#organization"
+	}
+}
+</script>
+
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "{{ 'Article' if ogType == 'article' else 'WebPage' }}",
+	"name": "{{ metaTitle }}",
+	"headline": "{{ metaTitle }}",
+	"description": "{{ metaDescription }}",
+	"url": "{{ canonicalUrl }}",
+	"image": "{{ imageUrl }}",
+	"inLanguage": "es-AR",
+	"isPartOf": {
+		"@id": "{{ site.url }}/#website"
+	},
+	"publisher": {
+		"@id": "{{ site.url }}/#organization"
+	}
+}
+</script>
+
+{# Breadcrumbs JSON-LD: Home + current page for clarity #}
+{% if not isHome %}
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "BreadcrumbList",
+	"itemListElement": [
+		{
+			"@type": "ListItem",
+			"position": 1,
+			"name": "Inicio",
+			"item": "{{ site.url }}/"
+		}{% if metaTitle and canonicalUrl %},
+		{
+			"@type": "ListItem",
+			"position": 2,
+			"name": "{{ metaTitle|replace('\"', '') }}",
+			"item": "{{ canonicalUrl }}"
+		}
+		{% endif %}
+	]
+}
+</script>
+{% endif %}
+
+{% if isHome %}
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "FAQPage",
+	"mainEntity": [
+		{
+			"@type": "Question",
+			"name": "¿Qué servicios ofrece Forestal Garuhapé SA?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "Forestal Garuhapé SA ofrece cosecha forestal mecanizada, transporte forestal, aprovechamiento de biomasa, playas de acopio, caminos forestales y consultoría para la cadena foresto-industrial."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "¿Dónde opera Forestal Garuhapé SA?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "La empresa forma parte de un grupo con operación en Argentina y Paraguay, con foco en soluciones forestales para la región Mercosur."
+			}
+		},
+		{
+			"@type": "Question",
+			"name": "¿Desde cuándo trabaja Forestal Garuhapé SA en servicios forestales?",
+			"acceptedAnswer": {
+				"@type": "Answer",
+				"text": "El grupo de empresas está dedicado a la consultoría y prestación de servicios forestales sustentables desde 1993."
+			}
+		}
+	]
+}
+</script>
+{% endif %}
+
+{% if servicio %}
+<script type="application/ld+json">
+{
+	"@context": "https://schema.org",
+	"@type": "Service",
+	"name": "{{ servicio.titulo }}",
+	"description": "{{ servicio.descripcion | striptags }}",
+	"url": "{{ canonicalUrl }}",
+	"image": "{{ imageUrl }}",
+	"provider": {
+		"@id": "{{ site.url }}/#organization"
+	},
+	"areaServed": [{% for area in site.areaServed %}
+		{
+			"@type": "Place",
+			"name": "{{ area }}"
+		}{% if not loop.last %},{% endif %}
+	{% endfor %}]
+}
+</script>
+{% endif %}

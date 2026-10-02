@@ -1,0 +1,8 @@
+[
+  { "src": "/images/servicios/transporte_forestal.png", "alt": "Flota de transporte forestal", "title": "Transporte forestal" },
+  { "src": "/images/servicios/transporte_forestal_carga.jpeg", "alt": "Camiones en ruta", "title": "Camiones en operación" },
+  { "src": "/images/servicios/transporte_3.jpeg", "alt": "Transporte cargas especiales", "title": "Transporte cargas especiales" },
+  { "src": "/images/servicios/transporte_especial.svg", "alt": "Transporte Especial", "title": "Transporte Especial" },
+  { "src": "/images/servicios/transporte_2.jpeg", "alt": "Transporte combustible", "title": "Transporte combustible" },
+  { "src": "/images/servicios/transporte_1.jpeg", "alt": "Transporte de chips", "title": "Transporte de chips" }
+]
