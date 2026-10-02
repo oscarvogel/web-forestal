@@ -13,7 +13,8 @@ Sitio estático generado con **[Eleventy](https://www.11ty.dev/)** + **[Tailwind
 | Pieza | Tecnología | Versión |
 | --- | --- | --- |
 | Generador de sitios | Eleventy (`@11ty/eleventy`) | 2.0.1 |
-| CSS | Tailwind CSS | 3.3.3 |
+| CSS | Tailwind CSS — vía Play CDN (se compila en el navegador) | 3.x |
+| CSS propio | `src/css/styles.css` (variables de tema, accesibilidad) | — |
 | Motor de plantillas | Nunjucks (`.njk`) | — |
 | Carruseles | Swiper 8 (CDN) | 8 |
 | Tipografías | Playfair Display + Work Sans (Google Fonts) | — |
@@ -46,11 +47,9 @@ npm install
 
 | Comando | Qué hace |
 | --- | --- |
-| `npm run dev` | Levanta Eleventy (`:8080`) **y** Tailwind en modo watch, en paralelo. Es el comando de desarrollo diario. |
-| `npm start` | Solo Eleventy con servidor y livereload (sin recompilar Tailwind). |
+| `npm start` | Levanta Eleventy con servidor y livereload en `:8080`. Es el comando de desarrollo. |
 | `npm run build` | Genera el sitio completo en `_site/` con `NODE_ENV=production`. |
 | `npm run watch` | Eleventy en modo watch (sin servidor). |
-| `npm run build:tailwind` | Compila Tailwind a `_site/css/styles.css` minificado. |
 | `npm test` | `build` + verificación de consistencia del contacto de WhatsApp. |
 | `npm run clean` | Borra `_site/`. |
 
@@ -60,7 +59,7 @@ npm install
 
 ```bash
 npm install
-npm run dev
+npm start
 # http://localhost:8080
 ```
 
@@ -114,11 +113,21 @@ El build actual genera **16 páginas** y copia **142 archivos** de assets en men
     │   └── sections/             # servicios, nosotros, sgi, galeria, clientes...
     │
     ├── css/
-    │   ├── tailwind.css          # Entrada de Tailwind (capas y componentes)
-    │   └── styles.css            # Salida compilada
+    │   ├── tailwind.css          # Solo directives @tailwind. Hoy NO se compila (ver abajo)
+    │   └── styles.css            # CSS propio del sitio — este es el que se carga
     ├── js/main.js             # Animación al scroll, hero video, menú móvil, sliders
     └── images/                # Fotos, logos (.svg), videos del hero
 ```
+
+### Cómo se carga el CSS
+
+Las utilidades de Tailwind llegan por el **Play CDN** (`https://cdn.tailwindcss.com`), que compila las clases **en el navegador** en cada visita. `src/css/styles.css` es CSS propio y se carga con `<link>`.
+
+Consecuencias a tener en cuenta:
+
+- **`tailwind.config.js` no se está aplicando.** El Play CDN no lee ese archivo, así que la paleta `brand` y las fuentes `font-display` / `font-body` definidas ahí **no están activas**. El sitio usa clases estándar (`emerald-700`, etc.) y define las tipografías con variables CSS en `base.njk`.
+- **No hay paso de compilación de Tailwind.** `src/css/tailwind.css` quedó sin uso.
+- El Play CDN está pensado para desarrollo: suma peso al JS del cliente y no es lo recomendado para producción. Migrar al pipeline real (compilar con `tailwindcss` a un `.css` estático y quitar el `<script>` del CDN) es la deuda técnica pendiente de este repo. Ver "Deuda técnica conocida".
 
 ---
 
@@ -232,10 +241,23 @@ El `.htaccess` y `enviar_mensaje.php` ya están incluidos en el build.
 
 `MANUAL_MARCA_FORESTAL_GARUHAPE.md` documenta la identidad de la empresa: esencia, propósito, visión, posicionamiento, atributos, uso del nombre, paleta y tipografías. **Consultalo antes de generar contenido nuevo** para mantener coherencia de tono y estilo.
 
-Los tokens técnicos viven en `tailwind.config.js` (`brand`, `font-display`, `font-body`).
+Los tokens técnicos están en `tailwind.config.js` (`brand`, `font-display`, `font-body`), pero **hoy ese archivo no se aplica al sitio** (ver "Cómo se carga el CSS"). Si migrás al pipeline compilado, esos tokens pasan a estar activos: verificá que las clases que agregues existan en esa paleta.
+
+---
+
+## Deuda técnica conocida
+
+Cosas detectadas al documentar el repo, pendientes a decisión:
+
+1. **Play CDN de Tailwind en producción.** Compila las clases en el navegador en cada visita. Lo correcto es compilar a CSS estático en el build. Es el cambio con más impacto en performance.
+2. **`tailwind.config.js` no se aplica.** Al migrar al pipeline, revisar que ninguna clase nueva dependa de la paleta `brand`.
+3. **`src/css/tailwind.css` está sin uso.** Se puede borrar o usar como entrada del pipeline.
+4. **`keywords` vacío** en `package.json`.
+5. **Sin CI.** Cada cambio depende de que alguien corra `npm test` a mano.
+6. **`npm run clean` no funciona en Windows** (usa `rm -rf`).
 
 ---
 
 ## Licencia
 
-MIT — ver `package.json`.
+MIT — ver [`LICENSE`](LICENSE) o el campo `license` en `package.json`.
