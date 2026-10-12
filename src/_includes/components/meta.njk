@@ -13,6 +13,7 @@
 
 <title>{{ metaTitle }}</title>
 <meta name="description" content="{{ metaDescription }}">
+{% if site.googleSiteVerification %}<meta name="google-site-verification" content="{{ site.googleSiteVerification }}">{% endif %}
 <meta name="author" content="{{ site.name }}">
 <meta name="robots" content="{{ metaRobots }}">
 <meta name="theme-color" content="#082d25">
