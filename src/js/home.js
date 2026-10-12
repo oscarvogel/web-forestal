@@ -93,7 +93,8 @@ export function setupHomeVideo() {
     reconcilePlayback();
   }, { threshold: 0 }).observe(hero);
   // Header behavior stays independent of the animation engine.
-  const updateHeader = () => { header.dataset.overHero = String(hero.getBoundingClientRect().bottom > header.offsetHeight); };
+  // Transparent only at the very top: once the hero copy scrolls, it would run under the logo and nav.
+  const updateHeader = () => { header.dataset.overHero = String(window.scrollY < 8 && hero.getBoundingClientRect().bottom > header.offsetHeight); };
   window.addEventListener('scroll', updateHeader, { passive: true });
   window.addEventListener('resize', updateHeader, { passive: true });
   document.addEventListener('visibilitychange', reconcilePlayback);
@@ -151,7 +152,10 @@ export function setupHomeMotion(gsap, ScrollTrigger, Lenis) {
         });
         setupHeroEntrance(gsap);
         setupDesktopReveal(gsap, ScrollTrigger, chapters);
-        document.fonts?.ready.then(() => { if (document.body.classList.contains('has-home-motion')) ScrollTrigger.refresh(); });
+        const refresh = () => { if (document.body.classList.contains('has-home-motion')) ScrollTrigger.refresh(); };
+        document.fonts?.ready.then(refresh);
+        // Lazy photos change the page height after the triggers were measured.
+        if (document.readyState === 'complete') refresh(); else window.addEventListener('load', refresh, { once: true });
       });
     } catch (error) {
       context.revert();
@@ -204,7 +208,7 @@ function setupDesktopReveal(gsap, ScrollTrigger, chapters) {
       const delay = index * .09;
       gsap.to(card.querySelector('.home-service-image'), { clipPath: 'inset(0% 0% 0% 0%)', duration: .9, delay, ease: EASE_MOVE, clearProps: 'clipPath' });
       gsap.to(card.querySelector('.home-service-image img'), { scale: 1, duration: 1.2, delay, ease: EASE_IN, clearProps: 'transform' });
-      gsap.to(card.querySelector('.home-service-copy'), { y: 0, autoAlpha: 1, duration: .6, delay: delay + .25, ease: EASE_IN, clearProps: 'all' });
+      gsap.to(card.querySelector('.home-service-copy'), { y: 0, autoAlpha: 1, duration: .6, delay: delay + .15, ease: EASE_IN, clearProps: 'all' });
     }),
   });
 
@@ -212,9 +216,9 @@ function setupDesktopReveal(gsap, ScrollTrigger, chapters) {
   lines($('#process-heading'));
   rise($('.home-process-intro > p'), '#process-heading');
   chapters.forEach((chapter) => {
-    const trigger = { trigger: chapter, start: 'top 62%', once: true };
+    const trigger = { trigger: chapter, start: 'top 72%', once: true };
     gsap.from(splitLines(chapter.querySelector('h3')), { yPercent: 110, duration: .9, ease: EASE_IN, stagger: LINE_STAGGER, scrollTrigger: trigger });
-    gsap.from(chapter.querySelectorAll('.operation-index, .operation-description, .operation-links'), { y: 18, autoAlpha: 0, duration: .6, delay: .2, stagger: .1, ease: EASE_IN, clearProps: 'all', scrollTrigger: trigger });
+    gsap.from(chapter.querySelectorAll('.operation-index, .operation-description, .operation-links'), { y: 18, autoAlpha: 0, duration: .6, delay: .1, stagger: .1, ease: EASE_IN, clearProps: 'all', scrollTrigger: trigger });
   });
 
   // Company: the year counts up; the fleet photo is unveiled and then drifts slowly

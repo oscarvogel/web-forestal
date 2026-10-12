@@ -18,7 +18,7 @@ html:has(.home-v2) { scroll-behavior: auto; }
 .home-meta { font-size: 12px; letter-spacing: .12em; margin-bottom: 24px; }
 
 .home-hero-base { display: flex; align-items: end; gap: 40px; margin-top: 64px; padding-top: 24px; border-top: 1px solid rgb(255 255 255 / 30%); }
-.home-hero-base span { font-size: 11px; letter-spacing: .08em; }
+.home-hero-base span { font-size: 12px; letter-spacing: .08em; }
 .home-hero-base p { margin-top: 6px; font-size: 15px; }
 .home-scroll-link { display: inline-flex; gap: 12px; align-items: center; min-height: 48px; margin-left: auto; order: 3; text-decoration: none; font-size: 14px; }
 .home-video-toggle { display: inline-flex; align-items: center; justify-content: center; order: 2; width: 48px; height: 48px; padding: 0; background: rgb(6 28 23 / 45%); border: 1px solid rgb(255 255 255 / 40%); border-radius: 50%; cursor: pointer; transition: background var(--dur-quick) var(--ease-fg), border-color var(--dur-quick) var(--ease-fg); }
@@ -116,7 +116,7 @@ html:has(.home-v2) { scroll-behavior: auto; }
   .home-meta { max-width: 32ch; font-size: 12px; line-height: 1.7; margin-bottom: 24px; }
   .home-hero-base { margin-top: 28px; gap: 18px 24px; }
   .home-hero-base > div { flex: 1 0 40%; }
-  .home-hero-base span { font-size: 11px; }
+  .home-hero-base span { font-size: 12px; }
   .home-hero-base p { font-size: 12px; }
   .home-scroll-link { font-size: 13px; }
   .home-capabilities, .home-company, .home-regional, .home-v2 .contact-section { padding-block: 64px; }

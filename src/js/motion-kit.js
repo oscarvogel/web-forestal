@@ -42,9 +42,9 @@ export function splitLines(heading) {
 
 // Scroll-triggered reveals, each played once.
 export function createReveal(gsap) {
-  const once = (trigger, start = 'top 82%') => ({ trigger, start, once: true });
+  const once = (trigger, start = 'top 88%') => ({ trigger, start, once: true });
   const rise = (targets, trigger, { start, ...vars } = {}) => gsap.from(targets, { y: 22, autoAlpha: 0, duration: .6, ease: EASE_IN, clearProps: 'all', scrollTrigger: once(trigger, start), ...vars });
-  const lines = (heading, trigger = heading, start) => gsap.from(splitLines(heading), { yPercent: 110, duration: .9, ease: EASE_IN, stagger: LINE_STAGGER, scrollTrigger: once(trigger, start) });
+  const lines = (heading, trigger = heading, start) => gsap.from(splitLines(heading), { yPercent: 110, duration: .7, ease: EASE_IN, stagger: LINE_STAGGER, scrollTrigger: once(trigger, start) });
   const mask = (figure, trigger = figure) => {
     const image = figure.querySelector('img');
     gsap.fromTo(figure, { clipPath: 'inset(14% 0% 0% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: .9, ease: EASE_MOVE, clearProps: 'clipPath', scrollTrigger: once(trigger) });

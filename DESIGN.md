@@ -19,6 +19,10 @@ colors:
   success-surface: "#e9f4ed"
   success-ink: "#065f46"
   control-white: "#ffffff"
+  rule-light: "#a7b6a9"
+  field-border-light: "#9db2a8"
+  frame-dark: "#1c3931"
+  error-text: "#ffc1bc"
 typography:
   display:
     fontFamily: "Manrope Variable, Manrope, system-ui, sans-serif"
@@ -163,6 +167,8 @@ La paleta usa los colores extraídos del CSS implementado. Los valores del front
 - **Texto secundario (`muted`)**: introducción, SGC y contenidos de apoyo.
 - **Pie operativo (`caption`) y numeración (`number`)**: foto estática y catálogo/índice de capítulos.
 - **Tinta secundaria (`ink-muted`)**: aclaraciones sobre crema.
+- **Filete sobre crema (`rule-light`) y borde de campo claro (`field-border-light`)**: separadores de alcance regional y campos de formularios interiores.
+- **Marco oscuro (`frame-dark`) y texto de error (`error-text`)**: fondo de reserva de imágenes del recorrido y mensajes de error sobre oscuro.
 - **Foco claro (`focus`)**: foco en hero, operación, SGC, contacto y pie; selección y caret.
 - **Campo y borde (`field`, `field-border`)**: entrada de consulta sobre fondo oscuro.
 - **Error (`error-border`, `error-surface`)**: campo inválido y feedback de fallo.
