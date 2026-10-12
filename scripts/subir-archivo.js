@@ -62,6 +62,10 @@ async function main() {
       const carpeta = path.posix.dirname(archivo.relativa);
       if (carpeta !== '.') {
         await client.ensureDir(carpeta);
+        // ensureDir deja el FTP parado dentro de la carpeta creada, y la
+        // subida usa una ruta relativa al directorio actual. Sin volver a la
+        // raiz, "assets/x.css" se buscaría en "assets/assets/x.css" (553).
+        await client.cd('/');
       }
       await client.uploadFrom(createReadStream(archivo.local), archivo.relativa);
       console.log(`  subido: ${archivo.relativa}`);
