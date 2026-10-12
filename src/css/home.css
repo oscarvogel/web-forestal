@@ -257,6 +257,10 @@ html:has(.home-v2) { scroll-behavior: auto; }
 @media (max-width: 767px) {
   .home-proof { padding-block: 64px; }
   .home-facts { margin-bottom: 48px; }
+  /* El degradado de 6% del escritorio son 22px a 375px de ancho: demasiado corto,
+     los logos se ven cortados de golpe. En celular va mas amplio para que la
+     entrada y la salida se lean como una Fade y no como un recorte. */
+  .home-clients { mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent); }
   .home-clients-list li { width: 150px; height: 84px; }
   .home-clients-list img { max-width: 112px; max-height: 36px; }
 }
