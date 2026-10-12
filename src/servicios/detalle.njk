@@ -6,10 +6,10 @@ pagination:
 permalink: "/servicios/{{ servicio.slug }}/index.html"
 eleventyComputed:
   title: "{{ servicio.titulo }} | Servicios Forestales | Forestal Garuhapé SA"
-  description: "{{ servicio.descripcion | striptags }}"
+  description: "{{ servicio.seo_description | default(servicio.descripcion | striptags) }}"
   seo:
     title: "{{ servicio.titulo }} | Servicios Forestales | Forestal Garuhapé SA"
-    description: "{{ servicio.descripcion | striptags }}"
+    description: "{{ servicio.seo_description | default(servicio.descripcion | striptags) }}"
     image: "{{ servicio.imagen }}"
     type: article
     canonical: "{% if servicio.slug == 'consultoria-forestal' %}{{ site.url }}/consultoria/{% else %}{{ site.url }}/servicios/{{ servicio.slug }}/{% endif %}"

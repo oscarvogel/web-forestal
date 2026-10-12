@@ -34,6 +34,11 @@ module.exports = function(eleventyConfig) {
       if (process.env.NODE_ENV === 'development') await buildAssets();
     });
 
+    // Fecha del build en formato YYYY-MM-DD. La usa el sitemap para <lastmod>:
+    // antes estaba fija en 2026-05-27 y nunca se actualizaba, asi que Google
+    // recibia siempre una fecha vieja. Se evalua en cada build (function).
+    eleventyConfig.addGlobalData('buildDate', () => new Date().toISOString().slice(0, 10));
+
     eleventyConfig.addFilter("htmlDateString", (dateObj) => {
       const date = dateObj instanceof Date ? dateObj : new Date(dateObj);
       return date.toISOString().slice(0, 10);
