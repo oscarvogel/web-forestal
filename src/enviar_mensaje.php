@@ -11,14 +11,14 @@ $serviceLabels = [
     'aprovechamiento-biomasa-forestal' => 'Aprovechamiento de biomasa forestal',
     'consultoria-forestal' => 'Consultoría forestal',
 ];
-$isJson = str_contains(strtolower((string)($_SERVER['HTTP_ACCEPT'] ?? '')), 'application/json');
+$isJson = strpos(strtolower((string)($_SERVER['HTTP_ACCEPT'] ?? '')), 'application/json') !== false;
 
 function escapeHtml(string $value): string
 {
     return htmlspecialchars($value, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 }
 
-function respondJson(int $status, array $payload): never
+function respondJson(int $status, array $payload): void
 {
     http_response_code($status);
     header('Content-Type: application/json; charset=utf-8');
@@ -28,7 +28,7 @@ function respondJson(int $status, array $payload): never
     exit;
 }
 
-function renderContactResponse(string $title, string $message, bool $isError, array $values = [], array $fieldErrors = []): never
+function renderContactResponse(string $title, string $message, bool $isError, array $values = [], array $fieldErrors = []): void
 {
     global $serviceLabels;
     $selectedService = (string)($values['servicio'] ?? '');
