@@ -2,9 +2,10 @@
 permalink: /sitemap.xml
 eleventyExcludeFromCollections: true
 ---
+{%- set hoy = buildDate -%}
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-{% set staticPages = [
+{%- set staticPages = [
   { "url": "/", "priority": "1.0", "changefreq": "weekly" },
   { "url": "/servicios/", "priority": "0.9", "changefreq": "monthly" },
   { "url": "/consultoria/", "priority": "0.8", "changefreq": "monthly" },
@@ -12,23 +13,25 @@ eleventyExcludeFromCollections: true
   { "url": "/trabaja/", "priority": "0.6", "changefreq": "monthly" },
   { "url": "/privacidad/", "priority": "0.3", "changefreq": "yearly" },
   { "url": "/terminos/", "priority": "0.3", "changefreq": "yearly" }
-] %}
+] -%}
 {% for item in staticPages %}
   <url>
     <loc>{{ site.url }}{{ item.url }}</loc>
-    <lastmod>2026-05-27</lastmod>
+    <lastmod>{{ hoy }}</lastmod>
     <changefreq>{{ item.changefreq }}</changefreq>
     <priority>{{ item.priority }}</priority>
   </url>
 {% endfor %}
 {% for servicio in todos_los_servicios %}
-  {% if servicio.slug != "consultoria-forestal" %}
+  {#- consultoria-forestal no se declara: su canonical apunta a /consultoria/,
+      asi que es la misma pagina y no debe aparecer dos veces. -#}
+  {%- if servicio.slug != "consultoria-forestal" -%}
   <url>
     <loc>{{ site.url }}/servicios/{{ servicio.slug }}/</loc>
-    <lastmod>2026-05-27</lastmod>
+    <lastmod>{{ hoy }}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  {% endif %}
+  {%- endif -%}
 {% endfor %}
 </urlset>
