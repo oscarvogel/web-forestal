@@ -6,9 +6,6 @@ import { desktopMotion } from './motion'
 
 gsap.registerPlugin(ScrollTrigger)
 
-export const prefersReducedMotion = () =>
-  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
-
 /** The live instance, so an open menu can pause page scrolling. */
 export let lenis: Lenis | null = null
 

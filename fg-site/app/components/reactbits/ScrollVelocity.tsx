@@ -5,13 +5,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 // Adapted from reactbits.dev ScrollVelocity (originally motion/react) to GSAP: a looping band that drifts on its own,
-// follows the scroll direction and speeds up with scroll velocity. Runs only while on screen; static for reduced motion.
+// follows the scroll direction and speeds up with scroll velocity. Runs only while on screen.
 export default function ScrollVelocity({ children, speed = 2.5, paused = false, className }: { children: ReactNode; speed?: number; paused?: boolean; className?: string }) {
   const band = useRef<HTMLDivElement>(null)
   const track = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    if (paused) return
     let x = Number(gsap.getProperty(track.current, 'xPercent')) || 0
     let direction = -1
     let boost = 0

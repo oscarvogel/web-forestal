@@ -3,8 +3,8 @@ import { gsap } from 'gsap'
 import { CustomEase } from 'gsap/CustomEase'
 import type { CSSProperties } from 'react'
 
-/** Only this case gets scrubbed, pinned scenes and the hero video. */
-export const desktopMotion = '(min-width: 1024px) and (pointer: fine) and (prefers-reduced-motion: no-preference)'
+/** Desktop scenes need a precise pointer; visual motion does not depend on the OS preference. */
+export const desktopMotion = '(min-width: 1024px) and (pointer: fine)'
 export const EASE_IN = 'fgOut'
 export const EASE_MOVE = 'fg'
 

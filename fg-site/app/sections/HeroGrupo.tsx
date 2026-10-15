@@ -27,9 +27,8 @@ export default function HeroGrupo() {
     const q = gsap.utils.selector(el)
     const mm = gsap.matchMedia()
 
-    mm.add({ desktop: desktopMotion, motion: '(prefers-reduced-motion: no-preference)' }, (context) => {
-      const { desktop, motion } = context.conditions!
-      if (!motion) return
+    mm.add({ desktop: desktopMotion }, (context) => {
+      const { desktop } = context.conditions!
 
       gsap
         .timeline({ defaults: { ease: EASE_IN } })

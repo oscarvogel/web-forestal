@@ -15,8 +15,7 @@ export default function Cifras() {
   useLayoutEffect(() => {
     const el = root.current!
     registerEases()
-    const mm = gsap.matchMedia()
-    mm.add('(prefers-reduced-motion: no-preference)', () => {
+    const ctx = gsap.context(() => {
       el.querySelectorAll<HTMLElement>('[data-count]').forEach((node) => {
         const target = Number(node.dataset.count)
         const state = { value: 0 }
@@ -31,8 +30,8 @@ export default function Cifras() {
         })
         node.textContent = format(0)
       })
-    })
-    return () => mm.revert()
+    }, el)
+    return () => ctx.revert()
   }, [])
 
   return (

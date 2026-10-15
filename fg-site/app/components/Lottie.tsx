@@ -17,7 +17,6 @@ export default function Lottie({ name, delay = 0, className, autoplay = 'view' }
     let animation: import('lottie-web').AnimationItem | undefined
     let timer = 0
     let cancelled = false
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
     const mount = async () => {
       try {
@@ -37,8 +36,7 @@ export default function Lottie({ name, delay = 0, className, autoplay = 'view' }
       }
       animation.addEventListener('data_failed', () => node.replaceChildren())
       animation.addEventListener('DOMLoaded', () => {
-        if (reduced) animation!.goToAndStop(animation!.totalFrames - 1, true)
-        else timer = window.setTimeout(() => animation!.play(), delay)
+        timer = window.setTimeout(() => animation!.play(), delay)
       })
     }
 

@@ -8,7 +8,7 @@
     "dev": "react-router dev",
     "build": "react-router typegen && tsc && react-router build",
     "preview": "vite preview --outDir build/client",
-    "test": "npm run build && node scripts/check-build.mjs",
+    "test": "npm run build && node scripts/check-build.mjs && node scripts/check-motion-policy.mjs",
     "deploy": "node scripts/deploy.mjs"
   },
   "dependencies": {
