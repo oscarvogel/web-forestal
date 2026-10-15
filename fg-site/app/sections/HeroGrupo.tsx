@@ -4,7 +4,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import MapaGrupo, { PIN_AR } from '../components/MapaGrupo'
 import Picture from '../components/Picture'
 import { foundingYear, group } from '../content/home'
-import { desktopMotion, EASE_IN, EASE_MOVE, registerEases, stagger } from '../lib/motion'
+import { motionAllowed, heroVideoAllowed, EASE_IN, EASE_MOVE, registerEases, stagger } from '../lib/motion'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -27,9 +27,12 @@ export default function HeroGrupo() {
     const q = gsap.utils.selector(el)
     const mm = gsap.matchMedia()
 
-    mm.add({ desktop: desktopMotion, motion: '(prefers-reduced-motion: no-preference)' }, (context) => {
-      const { desktop, motion } = context.conditions!
-      if (!motion) return
+    // La entrada del hero corre en TODOS los dispositivos: solo son unos tweens
+    // de entrada, no dependen de la pantalla. Lo anclado, en cambio, necesita
+    // puntero fino. Por eso la condicion de entrada es siempre verdadera y la
+    // del rail se evalua aparte.
+    mm.add({ rail: motionAllowed, siempre: '(min-width: 0px)' }, (context) => {
+      const { rail } = context.conditions!
 
       gsap
         .timeline({ defaults: { ease: EASE_IN } })
@@ -38,7 +41,7 @@ export default function HeroGrupo() {
         .from(q('[data-pin]'), { scale: 0, transformOrigin: '50% 50%', duration: 0.7, stagger: 0.2, ease: 'back.out(2)' }, 1.3)
         .from(q('[data-fade-svg]'), { autoAlpha: 0, duration: 0.8 }, 1.7)
 
-      if (!desktop) return
+      if (!rail) return
       el.dataset.motion = 'on'
       const stage = q('[data-stage]')[0]
       const pin = q('[data-pin-ar]')[0]
@@ -87,7 +90,7 @@ export default function HeroGrupo() {
   useEffect(() => {
     const v = video.current!
     const el = root.current!
-    const eligible = window.matchMedia(desktopMotion)
+    const eligible = window.matchMedia(heroVideoAllowed)
     const connection = (navigator as Navigator & { connection?: EventTarget & { saveData?: boolean } }).connection
     let enabled = false
     let visible = false

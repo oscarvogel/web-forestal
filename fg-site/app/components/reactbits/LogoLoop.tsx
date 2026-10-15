@@ -137,11 +137,6 @@ const useAnimationLoop = (
     const track = trackRef.current;
     if (!track) return;
 
-    const prefersReduced =
-      typeof window !== 'undefined' &&
-      window.matchMedia &&
-      window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
     const seqSize = isVertical ? seqHeight : seqWidth;
 
     if (seqSize > 0) {
@@ -152,12 +147,6 @@ const useAnimationLoop = (
       track.style.transform = transformValue;
     }
 
-    if (prefersReduced) {
-      track.style.transform = isVertical ? 'translate3d(0, 0, 0)' : 'translate3d(0, 0, 0)';
-      return () => {
-        lastTimestampRef.current = null;
-      };
-    }
 
     const animate = (timestamp: number) => {
       if (lastTimestampRef.current === null) {

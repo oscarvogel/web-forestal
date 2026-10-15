@@ -28,11 +28,8 @@ export default function Nav() {
     else lenis?.start()
     if (!open) return
 
-    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (!reduce) {
-      gsap.fromTo(sheet.current, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'expo.out' })
-      gsap.from(sheet.current!.querySelectorAll('[data-menu-row]'), { y: 40, autoAlpha: 0, duration: 0.8, ease: 'expo.out', stagger: 0.05, delay: 0.15 })
-    }
+    gsap.fromTo(sheet.current, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 0.8, ease: 'expo.out' })
+    gsap.from(sheet.current!.querySelectorAll('[data-menu-row]'), { y: 40, autoAlpha: 0, duration: 0.8, ease: 'expo.out', stagger: 0.05, delay: 0.15 })
     sheet.current?.querySelector('a')?.focus()
     const onKey = (event: KeyboardEvent) => {
       if (event.key !== 'Escape') return

@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Picture from '../components/Picture'
 import { capabilities } from '../content/home'
-import { desktopMotion } from '../lib/motion'
+import { motionAllowed } from '../lib/motion'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -15,7 +15,7 @@ export default function Capacidades() {
     const el = root.current!
     const q = gsap.utils.selector(el)
     const mm = gsap.matchMedia()
-    mm.add(desktopMotion, () => {
+    mm.add(motionAllowed, () => {
       el.dataset.motion = 'on'
       const track = q('[data-track]')[0]
       const distance = () => track.scrollWidth - window.innerWidth

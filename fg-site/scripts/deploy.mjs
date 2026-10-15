@@ -86,9 +86,20 @@ async function main() {
     await client.ensureDir(dir.replace(/\/+$/, '') || '/')
 
     // Crear carpetas antes de subir, para no fallar a mitad de camino.
+    //
+    // ensureDir() de basic-ftp v5 hace MKD + cd y DEJA EL CURSOR ADENTRO del
+    // directorio: no vuelve atras. Con rutas relativas cada llamada anida sobre
+    // la anterior (/animations -> /animations/assets -> /animations/assets/
+    // consultoria -> ...) y las carpetas del build nunca se crean en la raiz.
+    // El deploy revienta con "553 Can't open that file" en el primer archivo de
+    // img/, que es justo la primera carpeta que no existia todavia.
+    //
+    // La barra inicial importa: ensureDir() hace cd('/') antes de navegar si el
+    // path es absoluto, y eso es lo que corta el arrastre.
     for (const carpeta of folders) {
-      await client.ensureDir(carpeta)
+      await client.ensureDir(`/${carpeta.replace(/^\/+/, '')}`)
     }
+    await client.cd('/')
     console.log(`Carpetas listas: ${folders.length}`)
     console.log('')
 

@@ -3,7 +3,7 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Picture from '../components/Picture'
 import { narrative } from '../content/home'
-import { desktopMotion, EASE_MOVE } from '../lib/motion'
+import { motionAllowed, EASE_MOVE } from '../lib/motion'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,7 +17,7 @@ export default function Operacion() {
     const el = root.current!
     const q = gsap.utils.selector(el)
     const mm = gsap.matchMedia()
-    mm.add(desktopMotion, () => {
+    mm.add(motionAllowed, () => {
       el.dataset.motion = 'on'
       const scenes = q('[data-scene]')
       const counter = q('[data-count]')[0]

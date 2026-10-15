@@ -65,6 +65,24 @@ Options -Indexes
 # Configurar cabeceras HTTP para prevenir.Clickjacking
 # Header always set X-Frame-Options "SAMEORIGIN"
 
+# Cache del sitio
+# El HTML es el archivo que apunta a los bundles. Con ExpiresDefault "access
+# plus 1 month" el HTML tambien se cacheaba un mes y sin ETag, asi que el
+# navegador ni revalidaba: quien habia visitado el sitio antes de un deploy
+# seguia viendo la version anterior hasta que expiraba. Los .data son los
+# payloads del prerender y corren la misma suerte.
+<IfModule mod_headers.c>
+  <FilesMatch "\.(html|json|data)$">
+    Header set Cache-Control "public, max-age=0, must-revalidate"
+  </FilesMatch>
+
+  # Los bundles y las imagenes llevan hash en el nombre: si el nombre cambia,
+  # el archivo cambio. Se pueden cachear para siempre.
+  <FilesMatch "\.(js|css|woff2|avif|webp|svg|mp4|ico|png|jpg|jpeg)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>
+
 # Configurar cabeceras para mitigar Clickjacking y XSS
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"

@@ -2,7 +2,7 @@ import { useLayoutEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import Picture from './Picture'
-import { desktopMotion, stagger } from '../lib/motion'
+import { motionAllowed, stagger } from '../lib/motion'
 import type { Service } from '../content/servicios'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -14,7 +14,7 @@ export default function ServiceOpening({ service }: { service: Service }) {
   useLayoutEffect(() => {
     const el = root.current!
     const mm = gsap.matchMedia()
-    mm.add(desktopMotion, () => {
+    mm.add(motionAllowed, () => {
       gsap.to(el.querySelector('img'), { scale: 1.12, yPercent: 8, ease: 'none', scrollTrigger: { trigger: el, start: 'top top', end: 'bottom top', scrub: true } })
     })
     return () => mm.revert()

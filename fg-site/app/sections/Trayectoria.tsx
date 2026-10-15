@@ -5,7 +5,7 @@ import Picture from '../components/Picture'
 import ScrollVelocity from '../components/reactbits/ScrollVelocity'
 import PauseButton from '../components/PauseButton'
 import { capabilities, foundingYear } from '../content/home'
-import { desktopMotion } from '../lib/motion'
+import { motionAllowed } from '../lib/motion'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -18,10 +18,10 @@ export default function Trayectoria() {
     const el = root.current!
     const q = gsap.utils.selector(el)
     const mm = gsap.matchMedia()
-    mm.add(desktopMotion, () => {
+    mm.add(motionAllowed, () => {
       const year = q('[data-year]')[0]
       const clock = { value: new Date().getFullYear() }
-      // Start from today; the HTML keeps the founding year for no-JS, mobile and reduced motion.
+      // Start from today; the HTML keeps the founding year for no-JS and mobile.
       year.textContent = String(clock.value)
       gsap.to(clock, {
         value: foundingYear,

@@ -2,7 +2,6 @@ import { useLayoutEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { SplitText } from 'gsap/SplitText'
-import { prefersReducedMotion } from './smooth'
 import { EASE_IN, registerEases } from './motion'
 
 gsap.registerPlugin(ScrollTrigger, SplitText)
@@ -13,11 +12,10 @@ gsap.registerPlugin(ScrollTrigger, SplitText)
  *   media   a frame unclips upward while its image settles from a slight zoom
  *   fade    small copy lifts in
  *   stagger direct children lift in one after another
- * Same curve and trigger point everywhere. DOM defaults are the final state, so reduced motion just skips this.
+ * Same curve and trigger point everywhere. DOM defaults are the final state until each reveal runs.
  */
 export function useReveals() {
   useLayoutEffect(() => {
-    if (prefersReducedMotion()) return
     registerEases()
     const at = (el: Element) => ({ trigger: el, start: 'top 88%', once: true })
     // Anything already on screen at load stays as rendered: hiding it for an entrance would delay LCP.

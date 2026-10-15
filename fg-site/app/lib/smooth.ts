@@ -2,12 +2,9 @@ import { useEffect } from 'react'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { desktopMotion } from './motion'
+import { motionAllowed } from './motion'
 
 gsap.registerPlugin(ScrollTrigger)
-
-export const prefersReducedMotion = () =>
-  typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 /** The live instance, so an open menu can pause page scrolling. */
 export let lenis: Lenis | null = null
@@ -16,7 +13,7 @@ export let lenis: Lenis | null = null
 export function useSmoothScroll() {
   useEffect(() => {
     // DESIGN.md: smooth scrolling only for desktop with a fine pointer; touch keeps native scrolling.
-    if (!window.matchMedia(desktopMotion).matches) return
+    if (!window.matchMedia(motionAllowed).matches) return
     const instance = new Lenis({ lerp: 0.09, anchors: true })
     lenis = instance
     instance.on('scroll', ScrollTrigger.update)

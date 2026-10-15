@@ -143,9 +143,3 @@ html.lenis, html.lenis body { height: auto; }
 @keyframes marquee {
   to { transform: translateX(-50%); }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .pin-pulse { animation: none; opacity: 0; }
-  .intro, .intro-line { animation: none; }
-  [class*="animate-"] { animation: none !important; }
-}

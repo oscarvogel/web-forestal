@@ -62,6 +62,23 @@ if (!existsSync(new URL('llms.txt', out))) fail('llms.txt: falta')
 if (!existsSync(new URL('__spa-fallback.html', out))) fail('__spa-fallback.html: falta (es la página 404 de Apache)')
 if (!existsSync(new URL('enviar_mensaje.php', out))) fail('enviar_mensaje.php: falta en el build')
 
+// El hosting corre PHP 7.4.33 (verificado con un probe, no supuesto). Si el
+// build sube un archivo que use algo de PHP 8, el formulario de contacto deja de
+// funcionar con un 500 que SOLO se ve mirando el error_log del servidor. Se
+// avisa aca, que es donde se lee.
+const php = read('enviar_mensaje.php')
+const soloPhp8 = [
+  [/\bstr_contains\s*\(/, 'str_contains() (PHP 8.0+)'],
+  [/\bstr_starts_with\s*\(/, 'str_starts_with() (PHP 8.0+)'],
+  [/\bstr_ends_with\s*\(/, 'str_ends_with() (PHP 8.0+)'],
+  [/:\s*never\b/, 'tipo de retorno never (PHP 8.1+)'],
+  [/\?->/, 'operador nullsafe ?-> (PHP 8.0+)'],
+  [/\bmatch\s*\(/, 'match() (PHP 8.0+)'],
+]
+for (const [re, nombre] of soloPhp8) {
+  if (re.test(php)) fail(`enviar_mensaje.php usa ${nombre}; el hosting corre PHP 7.4`)
+}
+
 if (failures.length) {
   console.error(failures.join('\n'))
   process.exit(1)
