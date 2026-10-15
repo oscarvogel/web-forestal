@@ -1,0 +1,151 @@
+@import "@fontsource-variable/manrope";
+@import "@fontsource-variable/work-sans";
+@import "tailwindcss";
+
+/* Forestal Garuhapé brand (DESIGN.md / MANUAL_MARCA): deep forest surfaces, teal brand, cream pauses. */
+@theme {
+  --color-night: #061c17;
+  --color-forest: #082d25;
+  --color-field: #0e2a23;
+  --color-brand: #0f766e;
+  --color-brand-strong: #065f46;
+  --color-signal: #10b981;
+  --color-cream: #f1eee6;
+  --color-ink: #f7f7f6;
+  --color-ink-soft: #cbd9d2;
+  --color-caption: #b3c9bd;
+  --color-number: #8cb7a6;
+  --color-focus: #bde4d4;
+  --color-ink-dark: #061c17;
+  --color-ink-dark-muted: #56645d;
+  --color-line: rgb(203 217 210 / 0.16);
+  --color-line-dark: rgb(6 28 23 / 0.14);
+
+  --font-display: "Manrope Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Work Sans Variable", ui-sans-serif, system-ui, sans-serif;
+
+  /* Same curves as the Eleventy site's fgOut / fg eases. */
+  --ease-fg-out: cubic-bezier(0.05, 0.7, 0.1, 1);
+  --ease-fg: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@layer base {
+  html {
+    background: var(--color-night);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    scrollbar-color: var(--color-field) var(--color-night);
+    accent-color: var(--color-signal);
+  }
+  body {
+    background: var(--color-night);
+  }
+  h1, h2, h3, .display {
+    font-family: var(--font-display);
+    letter-spacing: -0.045em;
+    line-height: 1.04;
+    font-weight: 650;
+  }
+  ::selection {
+    background: var(--color-focus);
+    color: var(--color-ink-dark);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-focus);
+    outline-offset: 3px;
+  }
+}
+
+/* Small metadata labels: tiny uppercase next to giant headlines is the brand's editorial contrast. */
+@utility eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+/* Secondary link: quiet rule, a focus-colored rule draws over it on hover. */
+@utility ink-link {
+  --rule: color-mix(in oklab, currentColor 35%, transparent);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding-bottom: 0.35em;
+  background:
+    linear-gradient(currentColor, currentColor) left bottom / 0% 1px no-repeat,
+    linear-gradient(var(--rule), var(--rule)) left bottom / 100% 1px no-repeat;
+  transition: background-size 0.6s var(--ease-fg-out);
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 1px, 100% 1px;
+  }
+}
+
+/* Primary action: cream on night; hover wipes the signal green in from the left. */
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.5rem;
+  background:
+    linear-gradient(var(--color-signal), var(--color-signal)) left / 0% 100% no-repeat,
+    var(--color-cream);
+  color: var(--color-ink-dark);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: 2px;
+  transition: background-size 0.6s var(--ease-fg-out);
+  &:hover,
+  &:focus-visible {
+    background-size: 100% 100%;
+  }
+  &:active {
+    transform: translateY(1px) scale(0.98);
+  }
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+
+@keyframes pin-pulse {
+  from { transform: scale(1); opacity: 0.7; }
+  to { transform: scale(3.2); opacity: 0; }
+}
+.pin-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  /* Two beats (under 5 s) so it never needs a pause control (WCAG 2.2.2). */
+  animation: pin-pulse 2.4s var(--ease-fg) 2 both;
+}
+/* First-screen entrances run in CSS so they start with the first paint instead of waiting for JavaScript
+   (a JS-hidden headline delays LCP). Stagger with style={{ '--i': n }}. */
+@keyframes intro-rise {
+  from { opacity: 0; transform: translateY(0.5em); }
+}
+/* Starts partly inside its mask: a fully clipped headline doesn't count as painted, which pushed LCP back. */
+@keyframes intro-line {
+  from { transform: translateY(55%); opacity: 0; }
+}
+.intro {
+  animation: intro-rise 1s var(--ease-fg-out) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 60ms);
+}
+.intro-line {
+  display: block;
+  animation: intro-line 1.15s var(--ease-fg-out) both;
+  animation-delay: calc(var(--i, 0) * 90ms + 60ms);
+}
+
+@keyframes marquee {
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pin-pulse { animation: none; opacity: 0; }
+  .intro, .intro-line { animation: none; }
+  [class*="animate-"] { animation: none !important; }
+}

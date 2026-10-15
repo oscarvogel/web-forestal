@@ -1,0 +1,407 @@
+{
+  "/images/servicios/playa_acopio_1.jpeg": {
+    "slug": "playa-acopio-1",
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      480,
+      768,
+      1280,
+      1600
+    ]
+  },
+  "/images/flota_camiones.png": {
+    "slug": "flota-camiones",
+    "width": 1448,
+    "height": 1086,
+    "widths": [
+      480,
+      768,
+      1280,
+      1448
+    ]
+  },
+  "/images/actualizadas/cosecha-forestal.png": {
+    "slug": "cosecha-forestal",
+    "width": 1821,
+    "height": 864,
+    "widths": [
+      480,
+      768,
+      1280,
+      1821
+    ]
+  },
+  "/images/actualizadas/transporte-forestal.png": {
+    "slug": "transporte-forestal",
+    "width": 1448,
+    "height": 1086,
+    "widths": [
+      480,
+      768,
+      1280,
+      1448
+    ]
+  },
+  "/images/actualizadas/biomasa-forestal.png": {
+    "slug": "biomasa-forestal",
+    "width": 1821,
+    "height": 864,
+    "widths": [
+      480,
+      768,
+      1280,
+      1821
+    ]
+  },
+  "/images/actualizadas/playas-de-acopio.png": {
+    "slug": "playas-de-acopio",
+    "width": 1086,
+    "height": 1448,
+    "widths": [
+      480,
+      768,
+      1086
+    ]
+  },
+  "/images/actualizadas/caminos-forestales.png": {
+    "slug": "caminos-forestales",
+    "width": 1672,
+    "height": 941,
+    "widths": [
+      480,
+      768,
+      1280,
+      1672
+    ]
+  },
+  "/images/actualizadas/consultoria-forestal.png": {
+    "slug": "consultoria-forestal",
+    "width": 1672,
+    "height": 941,
+    "widths": [
+      480,
+      768,
+      1280,
+      1672
+    ]
+  },
+  "/images/servicios/chipeado_arbol_entero.jpeg": {
+    "slug": "chipeado-arbol-entero",
+    "width": 1600,
+    "height": 901,
+    "widths": [
+      480,
+      768,
+      1280,
+      1600
+    ]
+  },
+  "/images/servicios/biomasa_1.jpeg": {
+    "slug": "biomasa-1",
+    "width": 1600,
+    "height": 1199,
+    "widths": [
+      480,
+      768,
+      1280,
+      1600
+    ]
+  },
+  "/images/servicios/biomasa_2.jpeg": {
+    "slug": "biomasa-2",
+    "width": 1365,
+    "height": 621,
+    "widths": [
+      480,
+      768,
+      1280,
+      1365
+    ]
+  },
+  "/images/servicios/biomasa_3.jpeg": {
+    "slug": "biomasa-3",
+    "width": 1345,
+    "height": 621,
+    "widths": [
+      480,
+      768,
+      1280,
+      1345
+    ]
+  },
+  "/images/servicios/caminos_forestales_2.jpeg": {
+    "slug": "caminos-forestales-2",
+    "width": 1280,
+    "height": 720,
+    "widths": [
+      480,
+      768,
+      1280
+    ]
+  },
+  "/images/servicios/caminos_forestales_3.jpeg": {
+    "slug": "caminos-forestales-3",
+    "width": 1148,
+    "height": 746,
+    "widths": [
+      480,
+      768,
+      1148
+    ]
+  },
+  "/images/servicios/camino_1.jpeg": {
+    "slug": "camino-1",
+    "width": 1080,
+    "height": 700,
+    "widths": [
+      480,
+      768,
+      1080
+    ]
+  },
+  "/images/servicios/camino_2.jpeg": {
+    "slug": "camino-2",
+    "width": 650,
+    "height": 450,
+    "widths": [
+      480,
+      650
+    ]
+  },
+  "/images/servicios/camino_3.jpeg": {
+    "slug": "camino-3",
+    "width": 849,
+    "height": 323,
+    "widths": [
+      480,
+      768,
+      849
+    ]
+  },
+  "/images/servicios/1470.png": {
+    "slug": "1470",
+    "width": 1365,
+    "height": 768,
+    "widths": [
+      480,
+      768,
+      1280,
+      1365
+    ]
+  },
+  "/images/servicios/895_extraccion.jpeg": {
+    "slug": "895-extraccion",
+    "width": 1600,
+    "height": 900,
+    "widths": [
+      480,
+      768,
+      1280,
+      1600
+    ]
+  },
+  "/images/servicios/grua_carga.jpeg": {
+    "slug": "grua-carga",
+    "width": 1600,
+    "height": 900,
+    "widths": [
+      480,
+      768,
+      1280,
+      1600
+    ]
+  },
+  "/images/servicios/feller_643.jpeg": {
+    "slug": "feller-643",
+    "width": 1024,
+    "height": 768,
+    "widths": [
+      480,
+      768,
+      1024
+    ]
+  },
+  "/images/servicios/895_certificados.jpeg": {
+    "slug": "895-certificados",
+    "width": 1600,
+    "height": 900,
+    "widths": [
+      480,
+      768,
+      1280,
+      1600
+    ]
+  },
+  "/images/servicios/playa_acopio_2.jpg": {
+    "slug": "playa-acopio-2",
+    "width": 4032,
+    "height": 3024,
+    "widths": [
+      480,
+      768,
+      1280,
+      1920
+    ]
+  },
+  "/images/servicios/manejo_playa_1.jpeg": {
+    "slug": "manejo-playa-1",
+    "width": 844,
+    "height": 1125,
+    "widths": [
+      480,
+      768,
+      844
+    ]
+  },
+  "/images/servicios/manejo_playa_2.jpeg": {
+    "slug": "manejo-playa-2",
+    "width": 980,
+    "height": 310,
+    "widths": [
+      480,
+      768,
+      980
+    ]
+  },
+  "/images/servicios/manejo_playa_3.jpeg": {
+    "slug": "manejo-playa-3",
+    "width": 1156,
+    "height": 636,
+    "widths": [
+      480,
+      768,
+      1156
+    ]
+  },
+  "/images/servicios/transporte_forestal.png": {
+    "slug": "transporte-forestal",
+    "width": 1195,
+    "height": 896,
+    "widths": [
+      480,
+      768,
+      1195
+    ]
+  },
+  "/images/servicios/transporte_3.jpeg": {
+    "slug": "transporte-3",
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      480,
+      768,
+      1280,
+      1600
+    ]
+  },
+  "/images/servicios/transporte_2.jpeg": {
+    "slug": "transporte-2",
+    "width": 852,
+    "height": 346,
+    "widths": [
+      480,
+      768,
+      852
+    ]
+  },
+  "/images/servicios/transporte_1.jpeg": {
+    "slug": "transporte-1",
+    "width": 1600,
+    "height": 1200,
+    "widths": [
+      480,
+      768,
+      1280,
+      1600
+    ]
+  },
+  "/images/consultoria/abastecimiento-fg.webp": {
+    "slug": "abastecimiento-fg",
+    "width": 1536,
+    "height": 864,
+    "widths": [
+      480,
+      768,
+      1280,
+      1536
+    ]
+  },
+  "/images/consultoria/mercado-forestal-fg.webp": {
+    "slug": "mercado-forestal-fg",
+    "width": 1536,
+    "height": 864,
+    "widths": [
+      480,
+      768,
+      1280,
+      1536
+    ]
+  },
+  "/images/consultoria/productividad-fg.webp": {
+    "slug": "productividad-fg",
+    "width": 1536,
+    "height": 864,
+    "widths": [
+      480,
+      768,
+      1280,
+      1536
+    ]
+  },
+  "/images/consultoria/matriz-productiva-fg.webp": {
+    "slug": "matriz-productiva-fg",
+    "width": 1536,
+    "height": 864,
+    "widths": [
+      480,
+      768,
+      1280,
+      1536
+    ]
+  },
+  "/images/consultoria/supply-chain-fg.webp": {
+    "slug": "supply-chain-fg",
+    "width": 1536,
+    "height": 864,
+    "widths": [
+      480,
+      768,
+      1280,
+      1536
+    ]
+  },
+  "/images/consultoria/playa-madera-fg.webp": {
+    "slug": "playa-madera-fg",
+    "width": 1536,
+    "height": 864,
+    "widths": [
+      480,
+      768,
+      1280,
+      1536
+    ]
+  },
+  "/images/consultoria/viveros-tecnificados-fg.webp": {
+    "slug": "viveros-tecnificados-fg",
+    "width": 1536,
+    "height": 864,
+    "widths": [
+      480,
+      768,
+      1280,
+      1536
+    ]
+  },
+  "/images/consultoria/planificacion-multihorizonte-fg.webp": {
+    "slug": "planificacion-multihorizonte-fg",
+    "width": 1536,
+    "height": 864,
+    "widths": [
+      480,
+      768,
+      1280,
+      1536
+    ]
+  }
+}
