@@ -54,6 +54,10 @@ export default function Footer() {
           </button>
         )}
         <a href={site.url}>forestalgaruhape.com.ar</a>
+        <a className="hover:text-ink" href="https://github.com/romanvsc" {...external}>
+          Diseño y desarrollo: Román Vogel Corach
+          <span className="sr-only"> (abre en otra pestaña)</span>
+        </a>
       </div>
     </footer>
   )
